@@ -13,12 +13,9 @@ backend/venv.bak/
 # Node modules
 frontend/node_modules/
 
-# Environment variables (keep .env.development and .env.production)
-backend/.env
-backend/.env.local
-backend/.env.server
-frontend/.env
-frontend/.env.local
+# Environment variables - ALL .env files are sensitive
+backend/.env*
+frontend/.env*
 
 # IDE
 .vscode/
@@ -35,9 +32,11 @@ Thumbs.db
 frontend/dist/
 frontend/build/
 
-# Deployment files (keep as reference)
-# deploy*.sh
-# deploy*.ps1
+# Deployment files (contain sensitive info)
+deploy*.sh
+deploy*.ps1
+get-production-keys.md
+setup-*.md
 
 # Documentation temp files
 doc_*.txt

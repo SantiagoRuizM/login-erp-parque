@@ -41,7 +41,33 @@ const LoginForm = ({ onLoginSuccess }) => {
         setError(response.message || 'Login failed');
       }
     } catch (error) {
-      setError(error.message || 'An error occurred during login');
+      console.error('Login error details:', error);
+
+      // Detailed error handling with codes
+      let errorMessage = '';
+      let errorCode = 'UNKNOWN_ERROR';
+
+      if (error.message === 'Network Error' || error.message?.includes('fetch')) {
+        errorCode = 'NETWORK_ERROR';
+        errorMessage = `[${errorCode}] No se puede conectar al servidor. Verifica que el backend esté funcionando en http://localhost:5000`;
+      } else if (error.status === 401) {
+        errorCode = 'AUTH_ERROR';
+        errorMessage = `[${errorCode}] ${error.message || 'Credenciales incorrectas'}`;
+      } else if (error.status === 404) {
+        errorCode = 'ENDPOINT_ERROR';
+        errorMessage = `[${errorCode}] Endpoint no encontrado. Verifica la configuración del servidor`;
+      } else if (error.status === 500) {
+        errorCode = 'SERVER_ERROR';
+        errorMessage = `[${errorCode}] Error interno del servidor. Verifica los logs del backend`;
+      } else if (error.status >= 400 && error.status < 500) {
+        errorCode = 'CLIENT_ERROR';
+        errorMessage = `[${errorCode}] Error del cliente (${error.status}): ${error.message}`;
+      } else {
+        errorCode = 'UNKNOWN_ERROR';
+        errorMessage = `[${errorCode}] Error desconocido: ${error.message || 'Algo salió mal'}`;
+      }
+
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
