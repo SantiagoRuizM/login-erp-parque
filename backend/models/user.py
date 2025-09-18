@@ -17,6 +17,7 @@ class User:
         self.last_login = user_data.get('ultimo_acceso')
         self.active = user_data.get('activa')
         self.account_type = user_data.get('tipo_cuenta')
+        self.subdominio_redireccion = user_data.get('subdominio_redireccion')
     
     @staticmethod
     def hash_password(password: str) -> str:
@@ -113,5 +114,6 @@ class User:
             'created_at': self.created_at,
             'last_login': self.last_login,
             'active': self.active,
-            'account_type': self.account_type
+            'account_type': self.account_type,
+            'subdominio_redireccion': self.subdominio_redireccion
         }

@@ -44,15 +44,20 @@ function App() {
     setUser(userData);
     setIsAuthenticated(true);
     
-    // Redirect to dynamic URL based on username
+    // Redirect to dynamic URL based on subdominio_redireccion
     setTimeout(() => {
-      // Format username for subdomain (lowercase, remove spaces and special chars)
-      const formattedUsername = userData.username
-        .toLowerCase()
-        .replace(/\s+/g, '')
-        .replace(/[^a-z0-9-]/g, '');
-      
-      const redirectUrl = `https://${formattedUsername}.parque-e.co`;
+      // Use the subdominio_redireccion field directly from user data
+      const subdomain = userData.subdominio_redireccion;
+
+      if (!subdomain) {
+        console.error('No subdominio_redireccion found for user:', userData.username);
+        // Fallback: go to login form
+        setUser(null);
+        setIsAuthenticated(false);
+        return;
+      }
+
+      const redirectUrl = `https://${subdomain}.parque-e.co`;
       console.log('Redirecting to:', redirectUrl);
       
       // Clear authentication state immediately before redirect
