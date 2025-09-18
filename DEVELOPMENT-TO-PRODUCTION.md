@@ -43,6 +43,9 @@ Este documento explica el proceso completo para pasar cambios desde la rama `dev
 ### **PASO 1: Validación en Development** ✅ *(Ya completado)*
 
 ```bash
+# 0. Traer el repositorio.
+git clone https://github.com/SantiagoRuizM/login-erp-parque
+
 # 1. Verificar que el código funciona localmente
 cd inicio_parque
 npm run dev          # Frontend en puerto 3000
