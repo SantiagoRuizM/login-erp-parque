@@ -1,53 +1,50 @@
-# Dependencies
-node_modules/
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .Python
+backend/env/
+backend/venv/
+backend/ENV/
+backend/env.bak/
+backend/venv.bak/
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Node modules
+frontend/node_modules/
 
-# Virtual environments
-venv/
-env/
-ENV/
+# Environment variables (keep .env.development and .env.production)
+backend/.env
+backend/.env.local
+backend/.env.server
+frontend/.env
+frontend/.env.local
 
-# Build outputs
-frontend/dist/
-frontend/build/
-*.egg-info/
-
-# Logs
-*.log
-logs/
-pm2.log
-
-# IDE files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 
-# SSL certificates
-*.pem
-*.crt
-*.key
+# Build directories
+frontend/dist/
+frontend/build/
 
-# Database
-*.sqlite3
-*.db
+# Deployment files (keep as reference)
+# deploy*.sh
+# deploy*.ps1
 
-# Temporary files
-tmp/
-temp/
+# Documentation temp files
+doc_*.txt
+
+# Logs
+*.log
+logs/
+
+# Claude settings
+.claude/
